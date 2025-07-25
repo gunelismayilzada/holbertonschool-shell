@@ -1,2 +1,2 @@
-echo '#!/bin/bash
-rev' > 21-reverse
+#!/bin/bash
+rev
