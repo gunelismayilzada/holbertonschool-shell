@@ -1,8 +1,2 @@
 #!/bin/bash
-
-find . -type f -name "*.gif" -print \
-  | while read file; do
-      filename="${file##*/}"          # remove path
-      echo "${filename%.gif}"        # remove .gif extension
-    done \
-  | sort -f
+find . -type f -name "*.gif" -printf "%f\n" 2>/dev/null | sed 's/\.gif$//' | sort -f
