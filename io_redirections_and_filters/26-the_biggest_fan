@@ -1,2 +1,2 @@
 #!/bin/bash
-tail -n +2 input.tsv > tmpfile && cut -f1 tmpfile > hosts && sort hosts > hosts_sorted && uniq -c hosts_sorted > uniq_hosts && sort -nr uniq_hosts > sorted_hosts && head -11 sorted_hosts > top_hosts && while read count host; do echo "$host"; done < top_hosts
+readarray -t arr < <(tail -n +2 input.tsv | cut -f1 | sort | uniq -c | sort -nr | head -11); for e in "${arr[@]}"; do read c host <<< "$e"; echo "$host"; done
